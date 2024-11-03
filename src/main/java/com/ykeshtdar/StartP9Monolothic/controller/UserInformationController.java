@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("prescription")
 public class UserInformationController {
     private final UserInformationService userInformationService;
 
@@ -17,37 +17,37 @@ public class UserInformationController {
         this.userInformationService = userInformationService;
     }
 
-    @GetMapping
-    public UserInformation displayUserByName(@RequestParam("firstname")String name){
-        return userInformationService.findByUsername(name);
-    }
+//    @GetMapping
+//    public UserInformation displayUserByName(@RequestParam("firstname")String name){
+//        return userInformationService.findByUsername(name);
+//    }
 
-    @GetMapping("/all")
-    public List<UserInformation> displayAllUser(){
-        return userInformationService.displayAllUserInformation();
-    }
+//    @GetMapping("/all")
+//    public List<UserInformation> displayAllUser(){
+//        return userInformationService.displayAllUserInformation();
+//    }
 
-    @PostMapping
-    public UserInformation addUser(@RequestBody UserInformation userInformation){
-         return userInformationService.addUserInformation(userInformation);
-    }
+//    @PostMapping
+//    public UserInformation addUser(@RequestBody UserInformation userInformation){
+//         return userInformationService.addUserInformation(userInformation);
+//    }
 
-    @PutMapping("/update")
-    public UserInformation update(@RequestParam("firstname")String firstname,
-                                  @RequestParam("lastname")String lastname,
-                                  @RequestParam("gender")String gender,
-                                  @RequestParam("birthdate") LocalDate birthdate,
-                                  @RequestParam("address")String address,
-                                  @RequestParam("phoneNumber")String phoneNumber
-                                  ){
+//    @PutMapping("/update")
+//    public UserInformation update(@RequestParam("firstname")String firstname,
+//                                  @RequestParam("lastname")String lastname,
+//                                  @RequestParam("gender")String gender,
+//                                  @RequestParam("birthdate") LocalDate birthdate,
+//                                  @RequestParam("address")String address,
+//                                  @RequestParam("phoneNumber")String phoneNumber
+//                                  ){
+//
+//        return userInformationService.updateUserInformation(firstname,lastname,gender,birthdate,address,phoneNumber);
+//    }
 
-        return userInformationService.updateUserInformation(firstname,lastname,gender,birthdate,address,phoneNumber);
-    }
-
-    @DeleteMapping
-    public void deleteUser(@RequestParam("firstname")String firstname){
-         userInformationService.deleteUser(firstname);
-    }
+//    @DeleteMapping
+//    public void deleteUser(@RequestParam("firstname")String firstname){
+//         userInformationService.deleteUser(firstname);
+//    }
 
 
 
