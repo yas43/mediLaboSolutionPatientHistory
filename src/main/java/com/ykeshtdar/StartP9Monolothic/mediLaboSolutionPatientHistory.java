@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class   StartP9MonolothicApplication {
+public class mediLaboSolutionPatientHistory {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StartP9MonolothicApplication.class, args);
+		SpringApplication.run(mediLaboSolutionPatientHistory.class, args);
 	}
 
 }
