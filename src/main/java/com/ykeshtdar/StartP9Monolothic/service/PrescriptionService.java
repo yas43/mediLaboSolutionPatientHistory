@@ -87,8 +87,14 @@ public class PrescriptionService {
     public List<String> displayPrescriptions(Integer id) {
 
             Optional<Prescription> prescription = prescriptionRepository.findNotesById(id);
-        System.out.println("prescription is "+prescription);
+//        System.out.println("prescription is "+prescription);
             return prescription.map(Prescription::getNote).orElse(null);
 
+    }
+
+    public Prescription findPrescriptionById(Integer id) {
+       Prescription prescription = prescriptionRepository.findById(id)
+                .orElseThrow(()->new RuntimeException("prescription not founded"));
+       return prescription;
     }
 }

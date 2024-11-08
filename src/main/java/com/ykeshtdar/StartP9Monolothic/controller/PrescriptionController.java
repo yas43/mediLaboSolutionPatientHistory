@@ -15,6 +15,16 @@ public class PrescriptionController {
         this.prescriptionService = prescriptionService;
     }
 
+
+
+    @GetMapping("/prescription/{id}")
+    public Prescription findPrescriptionById(@PathVariable("id")Integer id){
+        return prescriptionService.findPrescriptionById(id);
+    }
+
+
+
+
 //    @GetMapping
 //    public UserInformation displayUserByName(@RequestParam("firstname")String name){
 //        return userInformationService.findByUsername(name);
@@ -56,8 +66,8 @@ public class PrescriptionController {
     }
 
 
-    @GetMapping("/prescriptions")
-    public List<String> displayPrescriptions(@RequestParam("id")Integer id){
+    @GetMapping("/prescriptions/{id}")
+    public List<String> displayPrescriptions(@PathVariable("id")Integer id){
         return prescriptionService.displayPrescriptions(id);
     }
 }
