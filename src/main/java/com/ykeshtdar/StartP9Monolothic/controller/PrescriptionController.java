@@ -59,10 +59,10 @@ public class PrescriptionController {
 
 
 
-    @PostMapping("/addPrescription")
-    public void addPrescription(@RequestBody Prescription prescription){
+    @PostMapping("/addPrescription/{id}")
+    public Prescription addPrescription(@PathVariable("id")Integer id,@RequestBody Prescription prescription){
 //        System.out.println("prescription is "+ prescription);
-          prescriptionService.addPrescriptionToPatient(prescription);
+       return  prescriptionService.addPrescriptionToPatient(id,prescription);
     }
 
 

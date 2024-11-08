@@ -68,17 +68,19 @@ public class PrescriptionService {
 //    }
 
 
-    public void addPrescriptionToPatient(Prescription prescription){
+    public Prescription addPrescriptionToPatient(Integer id,Prescription prescription){
 
-        int id = prescription.getId();
+//        int id = prescription.getId();
         if (prescriptionRepository.existsById(id)) {
             Query query = new Query(Criteria.where("id").is(prescription.getId()));
             Update update = new Update().push("note",prescription.getNote());
-            mongoTemplate.updateFirst(query, update, Prescription.class);
+             mongoTemplate.updateFirst(query, update, Prescription.class);
         }
         else {
             prescriptionRepository.save(prescription);
         }
+        return prescriptionRepository.findNotesById(id)
+                .orElse(null);
 //         prescriptionRepository.save(prescription);
 //        return prescriptionRepository.findById(prescription.getId())
 //                .orElseThrow(()->new RuntimeException("patient not founded"));
