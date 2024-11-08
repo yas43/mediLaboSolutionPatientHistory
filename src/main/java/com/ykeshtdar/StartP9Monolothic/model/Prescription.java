@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.*;
 
+import java.time.*;
 import java.util.*;
 
 @Document("prescription")
@@ -14,5 +15,6 @@ public class Prescription {
     @Id
     Integer id;
 //    String firstname;
-    String note;
+    List<String> note;
+//    LocalDateTime issuedDate;
 }

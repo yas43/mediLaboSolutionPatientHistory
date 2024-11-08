@@ -4,17 +4,15 @@ import com.ykeshtdar.StartP9Monolothic.model.*;
 import com.ykeshtdar.StartP9Monolothic.service.*;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("prescription")
-public class UserInformationController {
-    private final UserInformationService userInformationService;
+public class PrescriptionController {
+    private final PrescriptionService prescriptionService;
 
-    public UserInformationController(UserInformationService userInformationService) {
-        this.userInformationService = userInformationService;
+    public PrescriptionController(PrescriptionService prescriptionService) {
+        this.prescriptionService = prescriptionService;
     }
 
 //    @GetMapping
@@ -51,14 +49,15 @@ public class UserInformationController {
 
 
 
-    @PostMapping("addPrescription")
-    public void addPrescription(@RequestParam("id")Integer id,@RequestBody Prescription prescription){
-         userInformationService.addPrescriptionToPatient(id,prescription);
+    @PostMapping("/addPrescription")
+    public void addPrescription(@RequestBody Prescription prescription){
+//        System.out.println("prescription is "+ prescription);
+          prescriptionService.addPrescriptionToPatient(prescription);
     }
 
 
-    @GetMapping("prescriptions")
+    @GetMapping("/prescriptions")
     public List<String> displayPrescriptions(@RequestParam("id")Integer id){
-        return userInformationService.displayPrescriptions(id);
+        return prescriptionService.displayPrescriptions(id);
     }
 }

@@ -3,5 +3,5 @@ server:
 spring:
   data:
     mongodb:
-      database: p9
+      database: prescrptionHistory
       uri: mongodb://admin:3539@localhost:27017
