@@ -5,3 +5,9 @@ spring:
     mongodb:
       database: prescrptionHistory
       uri: mongodb://admin:3539@localhost:27017
+
+service:
+  url:
+    patientPrescriptionBase: http://localhost:8080/prescription
+    patientGetTokenBase: http://localhost:8080/patient
+    patientAuthorizationBase: http://localhost:8080/login
