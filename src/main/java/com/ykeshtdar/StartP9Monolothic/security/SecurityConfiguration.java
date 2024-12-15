@@ -42,22 +42,22 @@ public class SecurityConfiguration {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers(request ->
-                            "true".equals(request.getHeader("internalRequest"))).permitAll();
+//                    registry.requestMatchers(request ->
+//                            "true".equals(request.getHeader("internalRequest"))).permitAll();
                     registry.anyRequest().authenticated();
                 })
-                .addFilterBefore(new OncePerRequestFilter() {
-                    @Override
-                    protected void doFilterInternal(HttpServletRequest request,
-                                                    HttpServletResponse response,
-                                                    FilterChain filterChain) throws ServletException, IOException {
-                        // Bypass authentication by clearing the SecurityContext for internal requests
-                        if ("true".equals(request.getHeader("internalRequest"))) {
-                            SecurityContextHolder.clearContext();
-                        }
-                        filterChain.doFilter(request, response);
-                    }
-                }, UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(new OncePerRequestFilter() {
+//                    @Override
+//                    protected void doFilterInternal(HttpServletRequest request,
+//                                                    HttpServletResponse response,
+//                                                    FilterChain filterChain) throws ServletException, IOException {
+//                        // Bypass authentication by clearing the SecurityContext for internal requests
+//                        if ("true".equals(request.getHeader("internalRequest"))) {
+//                            SecurityContextHolder.clearContext();
+//                        }
+//                        filterChain.doFilter(request, response);
+//                    }
+//                }, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

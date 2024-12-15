@@ -75,12 +75,13 @@ public class PrescriptionController {
     public List<String> displayPrescriptions(@PathVariable("id")Integer id, HttpServletRequest request){
         System.out.println("inside history and token received in request.headers.auth.7 is "+request.getHeader(HttpHeaders.AUTHORIZATION.substring(7)));
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Object principle = authentication.getPrincipal();
-        UserDetails userDetails = (UserDetails) principle;
-        System.out.println("inside history and authentication(securitycontext.getcontext.getauthentication.principle)) is: "+principle);
-        System.out.println("username is "+userDetails.getUsername());
-        System.out.println("password is "+userDetails.getPassword());
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        Object principle = authentication.getPrincipal();
+//        UserDetails userDetails = (UserDetails) principle;
+//        System.out.println("inside history and authentication(securitycontext.getcontext.getauthentication.principle)) is: "+principle);
+//        System.out.println("username is "+userDetails.getUsername());
+//        System.out.println("password is "+userDetails.getPassword());
+        System.out.println("inside patient history and prescriptions/id endpoint list is:  "+prescriptionService.displayPrescriptions(id));
         return prescriptionService.displayPrescriptions(id);
     }
 }

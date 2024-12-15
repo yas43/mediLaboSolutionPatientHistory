@@ -8,6 +8,7 @@ import org.springframework.security.authentication.*;
 import org.springframework.security.core.context.*;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.web.authentication.*;
+import org.springframework.security.web.authentication.preauth.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.client.*;
 import org.springframework.web.filter.*;
@@ -40,7 +41,18 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
 
         if ("true".equals(request.getHeader("internalRequest"))) {
+            System.out.println("inside patient history pre filter check header detect request.getheader.internalRequest true");
+            // Create a pre-authenticated token
+            PreAuthenticatedAuthenticationToken authentication =
+                    new PreAuthenticatedAuthenticationToken("internalUser", null, null);
+
+            // Set the authentication in the SecurityContext
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+//            return;
+
+            System.out.println("security context :"+SecurityContextHolder.getContext());
             filterChain.doFilter(request, response);
+//            SecurityContextHolder.clearContext();
             return;
         }
 
