@@ -14,7 +14,5 @@ import java.util.*;
 public class Prescription {
     @Id
     Integer id;
-//    String firstname;
     List<String> note;
-//    LocalDateTime issuedDate;
 }
