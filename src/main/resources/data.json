@@ -1,0 +1,13 @@
+[
+  {
+    "patientId": "1",
+    "patient": "TestNone",
+    "note": " Poids  poids "
+  },
+  {
+    "patientId": "2",
+    "patient": "TestBorderline",
+    "note": " anormale "
+  }
+
+]
